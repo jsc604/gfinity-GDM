@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Manrope";
+  src: local("Manrope"),
+  url(~assets/fonts/Manrope-VariableFont_wght.ttf) format("truetype");
+}
+
+html {
+  font-family: "Manrope";
+}
+
+.test {
+  @apply text-xl bg-green-500 p-3;
+}
