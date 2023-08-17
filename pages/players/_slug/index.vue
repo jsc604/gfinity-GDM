@@ -1,54 +1,49 @@
 <template>
   <div class="p-6 sm:pt-16">
-    <div v-for="player in player" :key="player._id" class="bg-[#161616] rounded-xl flex flex-col sm:flex-row">
-      <img :src="urlFor(player.cardImage)" alt="Post Image" class="w-[182px] h-auto object-contain mb-auto mx-auto" />
+    <div v-for="player in player" :key="player._id" class="card">
+      <img :src="urlFor(player.cardImage)" alt="Player Image" class="card__image" />
 
-      <div class="grid grid-cols-3 lg:grid-cols-6 sm:w-full mx-2 sm:mx-8 gap-4">
+      <div class="card__stats">
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">PAC <span>{{ player.statistics.pace.average }}</span></div>
-          <div v-for="(value, key) in player.statistics.pace" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+        <div class="stats">
+          <div class="stats__heading">PAC <span>{{ player.statistics.pace.average }}</span></div>
+          <div v-for="(value, key) in player.statistics.pace" v-if="key !== 'average'" :key="key" class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">SHO <span>{{ player.statistics.shooting.average }}</span></div>
-          <div v-for="(value, key) in player.statistics.shooting" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+        <div class="stats">
+          <div class="stats__heading">SHO <span>{{ player.statistics.shooting.average }}</span></div>
+          <div v-for="(value, key) in player.statistics.shooting" v-if="key !== 'average'" :key="key" class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">PAS <span>{{ player.statistics.passing.average }}</span></div>
-          <div v-for="(value, key) in player.statistics.passing" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+        <div class="stats">
+          <div class="stats__heading">PAS <span>{{ player.statistics.passing.average }}</span></div>
+          <div v-for="(value, key) in player.statistics.passing" v-if="key !== 'average'" :key="key" class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">DRI <span>{{ player.statistics.dribbling.average }}</span></div>
+        <div class="stats">
+          <div class="stats__heading">DRI <span>{{ player.statistics.dribbling.average }}</span></div>
           <div v-for="(value, key) in player.statistics.dribbling" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+            class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">DEF <span>{{ player.statistics.defense.average }}</span></div>
-          <div v-for="(value, key) in player.statistics.defense" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+        <div class="stats">
+          <div class="stats__heading">DEF <span>{{ player.statistics.defense.average }}</span></div>
+          <div v-for="(value, key) in player.statistics.defense" v-if="key !== 'average'" :key="key" class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
 
-        <div class="col-span-1 flex flex-col space-y-4 my-4 w-full">
-          <div class="border-y-2 flex justify-between">PHY <span>{{ player.statistics.physical.average }}</span></div>
-          <div v-for="(value, key) in player.statistics.physical" v-if="key !== 'average'" :key="key"
-            class="text-xs flex justify-between">
+        <div class="stats">
+          <div class="stats__heading">PHY <span>{{ player.statistics.physical.average }}</span></div>
+          <div v-for="(value, key) in player.statistics.physical" v-if="key !== 'average'" :key="key" class="stats__item">
             {{ formatCamelCaseToTitleCase(key) }} <span>{{ value }}</span>
           </div>
         </div>
@@ -56,40 +51,40 @@
       </div>
     </div>
 
-    <div v-for="player in player" :key="player._id" class="my-4">
-      <div class="flex gap-2 sm:items-end flex-col sm:flex-row">
-        <h1 class="text-3xl">{{ player.name }}</h1>
-        <NuxtLink to="/players" class="text-[#848282] text-sm underline decoration-dotted">View all cards</NuxtLink>
+    <div v-for="player in player" :key="player._id" class="bio">
+      <div class="bio__heading">
+        <h1 class="bio__heading--name">{{ player.name }}</h1>
+        <NuxtLink to="/players" class="bio__heading--redirect">View all cards</NuxtLink>
       </div>
 
-      <ul class="flex flex-col sm:flex-row mt-8 justify-between">
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Club</div>
-          <div class="font-light">{{ player.club }}</div>
+      <ul class="bio__list">
+        <li class="bio__item">
+          <div class="bio__item--title">Club</div>
+          <div class="bio__item--detail">{{ player.club }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">League</div>
-          <div class="font-light">{{ player.league }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">League</div>
+          <div class="bio__item--detail">{{ player.league }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Nation</div>
-          <div class="font-light">{{ player.nation }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">Nation</div>
+          <div class="bio__item--detail">{{ player.nation }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Strong Foot</div>
-          <div class="font-light">{{ formatCamelCaseToTitleCase(player.strongFoot) }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">Strong Foot</div>
+          <div class="bio__item--detail">{{ formatCamelCaseToTitleCase(player.strongFoot) }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Age</div>
-          <div class="font-light">{{ player.age }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">Age</div>
+          <div class="bio__item--detail">{{ player.age }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Height</div>
-          <div class="font-light">{{ player.height }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">Height</div>
+          <div class="bio__item--detail">{{ player.height }}</div>
         </li>
-        <li class="flex justify-between max-sm:border-b sm:border-l border-[#848282] sm:px-4 max-sm:py-4 sm:flex-col sm:space-y-4">
-          <div class="text-[#848282]">Workrates</div>
-          <div class="font-light">{{ player.workRatesAttacking }} / {{ player.workRatesDefensive }}</div>
+        <li class="bio__item">
+          <div class="bio__item--title">Workrates</div>
+          <div class="bio__item--detail">{{ player.workRatesAttacking }} / {{ player.workRatesDefensive }}</div>
         </li>
       </ul>
 

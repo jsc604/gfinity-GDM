@@ -42,8 +42,32 @@
 
 - I chose to use a table to display the data because makes the most sense as it has a header with all the data below.
 
+- Added a link styling to each individual players names. Clicking it will take you to the individial players details page.
+
 - The width of each cell in the table is set to a specific width to prevent shrinkage when switching to smaller screens as the data listed looks pretty compressed already.
+
+- Semi-bolded the text under the OVR column to make it easier to read under the white background.
 
 - The page is fully responsive allowing the user to scroll the table to the left and right to view the data on mobile screens.
 
 - I wasnt sure which data to use for the Type category so I just used the `cardType`.
+
+## Details Page
+
+- I fetch the data from using `slug.current` in the parameters.
+
+- The image is displayed with a set width which is 182px according to the Figma file. 
+I maintained the images original aspect ratio by setting the height to `auto` and using `object-fit: contain`.
+
+- I chose to use a grid to style the stats.
+Grid starts with 6 columns then changes to 3 after `lg` screen.
+The image will float to the top on `sm` screens.
+
+- Clicking on `View all cards` will take you back to the players list.
+
+- The styles for the bio are adjusted to look like the mobile and desktop view on the Figma file.
+
+- Added a function `formatCamelCaseToTitleCase` to match the style on the Figma File.
+
+- I chose to loop over the stat items and display the key and value instead of hardcoding the key.
+This way reduces the lines of code needed and is more efficient when adding new items to each individual stat.
