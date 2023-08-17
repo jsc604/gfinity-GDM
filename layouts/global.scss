@@ -6,7 +6,7 @@
 
 html {
   font-family: "Manrope";
-  @apply bg-[#37373D];
+  @apply bg-[#37373D] text-white;
 }
 
 .header {
@@ -34,7 +34,7 @@ html {
 }
 
 .table {
-  @apply text-white font-light w-full mx-auto text-xs font-light;
+  @apply font-light w-full mx-auto text-xs font-light;
 
   &__header {
     @apply w-full flex my-2 justify-center mx-auto px-8;

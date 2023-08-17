@@ -1,11 +1,4 @@
 <template>
-  <!-- <ul>
-      <li v-for="post in posts" :key="post._id">
-        <img :src="urlFor(post.cardImage)" alt="Post Image" class="w-1/4" />
-        <span class="test">{{ post.age }}</span>
-        <SortIcon />
-      </li>
-    </ul> -->
   <div class="table-container">
     <table class="table mt-12 mb-24">
       <thead>
@@ -82,11 +75,8 @@
 </template>
 
 <script>
-import { client, getPlayers } from '../../sanity-client/sanity';
-import imageUrlBuilder from '@sanity/image-url';
+import { getPlayers } from '../../sanity-client/sanity';
 import SortIcon from '../../assets/icons/SortIcon';
-
-const builder = imageUrlBuilder(client);
 
 export default {
   components: {
@@ -95,17 +85,11 @@ export default {
   async asyncData() {
     try {
       const players = await getPlayers();
-      console.log('players: ', players);
       return { players };
     } catch (error) {
       console.error('Error fetching players:', error);
       return { players: [] };
     }
-  },
-  methods: {
-    urlFor(source) {
-      return builder.image(source);
-    },
   },
 };
 </script>
