@@ -13,16 +13,8 @@ export async function getPlayers() {
 }
 
 export async function getPlayer(player: string) {
-  const name = player.split("-");
-  const formattedName = name.map(
-    (name) => name.charAt(0).toUpperCase() + name.slice(1)
-  );
-
-  const firstName = formattedName[0];
-  const lastName = formattedName[1];
-
   const fetchedPlayer = await client.fetch(
-    `*[_type == "fifaCard" && name == "${firstName} ${lastName}" ]`
+    `*[_type == "fifaCard" && slug.current == "${player}" ]`
   );
   return fetchedPlayer;
 }

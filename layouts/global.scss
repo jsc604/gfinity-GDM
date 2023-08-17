@@ -57,7 +57,7 @@ html {
     @apply w-full flex justify-center border-b border-black mx-auto;
 
     &--name {
-      @apply w-[136.5px] text-left flex items-center;
+      @apply w-[136.5px] text-left flex items-center hover:underline;
     }
 
     &--stat {

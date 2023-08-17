@@ -92,8 +92,8 @@
           <div class="font-light">{{ player.workRatesAttacking }} / {{ player.workRatesDefensive }}</div>
         </li>
       </ul>
-    </div>
 
+    </div>
   </div>
 </template>
 
@@ -107,7 +107,6 @@ export default {
   async asyncData({ params }) {
     try {
       const player = await getPlayer(params.slug);
-      console.log('player: ', player);
       return { player };
     } catch (error) {
       console.error('Error fetching player:', error);
