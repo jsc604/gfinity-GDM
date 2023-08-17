@@ -1,0 +1,112 @@
+<template>
+  <!-- <ul>
+      <li v-for="post in posts" :key="post._id">
+        <img :src="urlFor(post.cardImage)" alt="Post Image" class="w-1/4" />
+        <span class="test">{{ post.age }}</span>
+        <SortIcon />
+      </li>
+    </ul> -->
+  <div class="table-container">
+    <table class="table mt-12 mb-24">
+      <thead>
+        <tr class="table__header">
+          <th class="table__header--name">Name<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">OVR<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">POS<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">Type<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">PAC<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">SHO<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">PAS<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">DRI<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">DEF<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">PHY<SortIcon class="ml-1" /></th>
+          <th class="table__header--stat">WR<SortIcon class="ml-1" /></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="player in players" :key="player._id" class="table__cell bg-[#101010]">
+          <td class="table__cell--name">{{ player.name }}</td>
+          <td class="table__cell--stat">
+            <div class="overall">{{ player.rating }}</div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="position">
+              {{ player.position }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="position">
+              {{ player.cardType }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.pace.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.shooting.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.passing.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.dribbling.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.defense.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="stat">
+              {{ player.statistics.physical.average }}
+            </div>
+          </td>
+          <td class="table__cell--stat">
+            <div class="position">
+              {{ player.workRatesAttacking.charAt(0) }} \ {{ player.workRatesDefensive.charAt(0) }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+import { client, getPlayers } from '../../sanity-client/sanity';
+import imageUrlBuilder from '@sanity/image-url';
+import SortIcon from '../../assets/icons/SortIcon';
+
+const builder = imageUrlBuilder(client);
+
+export default {
+  components: {
+    SortIcon,
+  },
+  async asyncData() {
+    try {
+      const players = await getPlayers();
+      console.log('players: ', players);
+      return { players };
+    } catch (error) {
+      console.error('Error fetching players:', error);
+      return { players: [] };
+    }
+  },
+  methods: {
+    urlFor(source) {
+      return builder.image(source);
+    },
+  },
+};
+</script>
+

@@ -29,3 +29,51 @@ html {
   }
 }
 
+.table-container {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply text-white font-light w-full mx-auto text-xs font-light;
+
+  &__header {
+    @apply w-full flex my-2 justify-center mx-auto px-8;
+
+    &--name {
+      @apply flex items-center w-[136.5px] text-left font-light py-2;
+    }
+
+    &--stat {
+      @apply flex items-center justify-center w-[68.25px] font-light;
+      border-right: none;
+
+      &:not(:last-child) {
+        border-right: 2px solid #606060;
+      }
+    }
+  }
+
+  &__cell {
+    @apply w-full flex justify-center border-b border-black mx-auto;
+
+    &--name {
+      @apply w-[136.5px] text-left flex items-center;
+    }
+
+    &--stat {
+      @apply w-[68.25px] text-center py-3;
+
+      .overall {
+        @apply mx-2 border rounded-md py-2 text-black bg-white font-semibold;
+      }
+
+      .position {
+        @apply mx-2 rounded-md py-2 bg-black;
+      }
+
+      .stat {
+        @apply mx-2 rounded-md py-2 bg-black border;
+      }
+    }
+  }
+}
