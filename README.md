@@ -2,68 +2,48 @@
 
 ## Build Setup
 
-```bash
-# install dependencies
-$ npm install
+- This project is set up using Nuxt 2 with Vue using `create-nuxt-app`
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+- Dependancies installed were Tailwind, Sass for styling, sanity client and image builder for fetching and displaying data, and jest for testing.
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Styling
 
-# generate static project
-$ npm run generate
-```
+- I wanted to showcase my skills in tailwind and BEM naming so I decided to combine the 2 technologies for styling. 
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- I have used BEM for the class names to keep it neat.
 
-## Special Directories
+- In the scss files I am using the `@apply` rule so I can use Tailwind shorthand for listing out the styles. 
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+- Of course I can always switch the syntax back to regular css if this is not a best practice thing to do.
 
-### `assets`
+## Layout
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+- I have implemented a default layout for the app.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+- The header component is always on top and expands the whole screen width.
 
-### `components`
+- I set the max width of the main display to 1024px because that was the size in the figma file.
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+- The rest of the background is set to they grey color (#37373D) as shown in the figma file.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+## Header
 
-### `layouts`
+- I have made the navigation menu into a button that can easily implement a dropdown in the future.
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+- The logo on the right side is also a link that redirects the client back to the homepage.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+## List Page
 
+- I have set the list page to `/players` as the data being shown appears to be a list of players and their stats.
 
-### `pages`
+- I tried to get the design as close to the Figma file as possible.
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+- The data is fetched serverside and rendered using SSR.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+- I chose to use a table to display the data because makes the most sense as it has a header with all the data below.
 
-### `plugins`
+- The width of each cell in the table is set to a specific width to prevent shrinkage when switching to smaller screens as the data listed looks pretty compressed already.
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+- The page is fully responsive allowing the user to scroll the table to the left and right to view the data on mobile screens.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- I wasnt sure which data to use for the Type category so I just used the `cardType`.
