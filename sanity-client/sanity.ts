@@ -8,7 +8,7 @@ export const client = createClient({
 })
 
 // uses GROQ to query content: https://www.sanity.io/docs/groq
-export async function getPosts() {
+export async function getPlayers() {
   const posts = await client.fetch('*[_type == "fifaCard"]')
   return posts
 }
