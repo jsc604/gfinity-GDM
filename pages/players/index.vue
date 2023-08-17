@@ -19,7 +19,11 @@
 
       <tbody>
         <tr v-for="player in players" :key="player._id" class="table__cell bg-[#101010]">
-          <td class="table__cell--name">{{ player.name }}</td>
+          <td class="table__cell--name">
+            <NuxtLink :to="`/players/${player.slug.current}`">
+              {{ player.name }}
+            </NuxtLink>
+          </td>
           <td class="table__cell--stat">
             <div class="overall">{{ player.rating }}</div>
           </td>

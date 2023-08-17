@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="max-w-[1024px] mx-auto bg-black">
+    <div class="max-w-[1024px] min-h-[100vh] mx-auto bg-black">
       <Nuxt />
     </div>
   </div>
