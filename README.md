@@ -41,7 +41,8 @@
 - The data is fetched serverside and rendered using SSR.
 
 - I chose to use a table to display the data because makes the most sense as it has a header with all the data below.
-&emsp;This could have been achieved with a graph or just flexblox instead.
+
+- This could have been achieved with a graph or just flexblox instead.
 
 - Added a link styling to each individual players names. Clicking it will take you to the individial players details page.
 
@@ -53,16 +54,23 @@
 
 - I wasnt sure which data to use for the Type category so I just used the `cardType`.
 
+- Turned TableCell into reusable component. Could have used a cellClass prop instead of computing the name if there were more styles in the future, but there was only 1 cell that needed a different class.
+
 ## Details Page
 
-- I fetch the data from using `slug.current` in the parameters.
+- I fetch the data from using `slug.current` in the parameters passed from the list page.
+
+- I felt this was the better approach than using `_id` because it is better for SEO and makes the url easy to identify unlike the id number.
 
 - The image is displayed with a set width which is 182px according to the Figma file. 
-&emsp;I maintained the images original aspect ratio by setting the height to `auto` and using `object-fit: contain`.
+
+- I maintained the images original aspect ratio by setting the height to `auto` and using `object-fit: contain`.
 
 - I chose to use a grid to style the stats details.
-&emsp;Grid starts with 6 columns then changes to 3 after `lg` screen.
-&emsp;The image will float to the top on `sm` screens.
+
+- Grid starts with 6 columns then changes to 3 after `lg` screen.
+
+- The image will float to the top on `sm` screens.
 
 - Clicking on `View all cards` will take you back to the players list.
 
@@ -71,7 +79,10 @@
 - Added a function `formatCamelCaseToTitleCase` to match the style on the Figma File.
 
 - I chose to loop over the stat items and display the key and value instead of hardcoding the key.
-&emsp;This way reduces the lines of code needed and is more efficient when adding new items to each individual stat.
+
+- This way reduces the lines of code needed and is more efficient when adding new items to each individual stat.
+
+- Also turned the Stats and Bio items into reusable components for cleaner code.
 
 ## Sorting Functions
 

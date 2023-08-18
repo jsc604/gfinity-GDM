@@ -52,61 +52,21 @@
 
       <tbody>
         <tr v-for="player in players" :key="player._id" class="table__cell bg-[#101010]">
-          <td class="table__cell--name">
-            <NuxtLink :to="`/players/${player.slug.current}`">
-              {{ player.name }}
-            </NuxtLink>
-          </td>
-          <td class="table__cell--stat">
-            <div class="overall">{{ player.rating }}</div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="position">
-              {{ player.position }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="position">
-              {{ player.cardType }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.pace.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.shooting.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.passing.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.dribbling.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.defense.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="stat">
-              {{ player.statistics.physical.average }}
-            </div>
-          </td>
-          <td class="table__cell--stat">
-            <div class="position">
-              {{ player.workRatesAttacking.charAt(0) }} \ {{ player.workRatesDefensive.charAt(0) }}
-            </div>
-          </td>
+          <TableCell dataType="link" :to="`/players/${player.slug.current}`" :content="player.name" />
+          <TableCell dataType="overall" :content="player.rating" />
+          <TableCell dataType="position" :content="player.position" />
+          <TableCell dataType="position" :content="player.cardType" />
+          <TableCell dataType="stat" :content="player.statistics.pace.average" />
+          <TableCell dataType="stat" :content="player.statistics.shooting.average" />
+          <TableCell dataType="stat" :content="player.statistics.passing.average" />
+          <TableCell dataType="stat" :content="player.statistics.dribbling.average" />
+          <TableCell dataType="stat" :content="player.statistics.defense.average" />
+          <TableCell dataType="stat" :content="player.statistics.physical.average" />
+          <TableCell dataType="position"
+            :content="player.workRatesAttacking.charAt(0) + ' / ' + player.workRatesDefensive.charAt(0)" />
         </tr>
       </tbody>
+
     </table>
   </div>
 </template>
