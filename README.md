@@ -6,6 +6,12 @@
 
 - Dependancies installed were Tailwind, Sass for styling, sanity client and image builder for fetching and displaying data, and jest for testing.
 
+- To start clone this project through your terminal: `git clone git@github.com:jsc604/gfinity-GDM.git <your-name>`.
+
+- `cd` into your cloned folder and run `npm i` in the terminal to install dependancies.
+
+- Type `npm run dev` in your terminal to view the project on port 3000.
+
 - Created a simple homepage that links to the list page.
 
 ## Styling
