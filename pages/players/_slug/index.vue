@@ -1,6 +1,6 @@
 <template>
   <div class="p-6 sm:pt-16">
-    <div v-for="player in player" :key="player._id" class="card">
+    <div v-for="player in player" class="card">
       <img :src="urlFor(player.cardImage)" alt="Player Image" class="card__image" />
 
       <div class="card__stats">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div v-for="player in player" :key="player._id" class="bio">
+    <div v-for="player in player" class="bio">
       <div class="bio__heading">
         <h1 class="bio__heading--name">{{ player.name }}</h1>
         <NuxtLink to="/players" class="bio__heading--redirect">View all cards</NuxtLink>

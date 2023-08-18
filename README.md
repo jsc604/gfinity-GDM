@@ -6,6 +6,8 @@
 
 - Dependancies installed were Tailwind, Sass for styling, sanity client and image builder for fetching and displaying data, and jest for testing.
 
+- Created a simple homepage that links to the list page.
+
 ## Styling
 
 - I wanted to showcase my skills in tailwind and BEM naming so I decided to combine the 2 technologies for styling. 
@@ -36,11 +38,10 @@
 
 - I have set the list page to `/players` as the data being shown appears to be a list of players and their stats.
 
-- I tried to get the design as close to the Figma file as possible.
-
 - The data is fetched serverside and rendered using SSR.
 
 - I chose to use a table to display the data because makes the most sense as it has a header with all the data below.
+&emsp;This could have been achieved with a graph or just flexblox instead.
 
 - Added a link styling to each individual players names. Clicking it will take you to the individial players details page.
 
@@ -57,11 +58,11 @@
 - I fetch the data from using `slug.current` in the parameters.
 
 - The image is displayed with a set width which is 182px according to the Figma file. 
-I maintained the images original aspect ratio by setting the height to `auto` and using `object-fit: contain`.
+&emsp;I maintained the images original aspect ratio by setting the height to `auto` and using `object-fit: contain`.
 
-- I chose to use a grid to style the stats.
-Grid starts with 6 columns then changes to 3 after `lg` screen.
-The image will float to the top on `sm` screens.
+- I chose to use a grid to style the stats details.
+&emsp;Grid starts with 6 columns then changes to 3 after `lg` screen.
+&emsp;The image will float to the top on `sm` screens.
 
 - Clicking on `View all cards` will take you back to the players list.
 
@@ -70,4 +71,12 @@ The image will float to the top on `sm` screens.
 - Added a function `formatCamelCaseToTitleCase` to match the style on the Figma File.
 
 - I chose to loop over the stat items and display the key and value instead of hardcoding the key.
-This way reduces the lines of code needed and is more efficient when adding new items to each individual stat.
+&emsp;This way reduces the lines of code needed and is more efficient when adding new items to each individual stat.
+
+## Sorting Functions
+
+- I created 3 sorting functions for the application.
+
+- I was thinking about using just 2, one for the strings and one for numbers but I think an extra function for sorting through 2 keys is cleaner.
+
+- Also implemented some unit tests for the sort functions.

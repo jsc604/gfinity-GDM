@@ -89,7 +89,7 @@ html {
   }
 
   &__stats {
-    @apply grid grid-cols-3 lg:grid-cols-6 sm:w-full mx-2 sm:mx-8 gap-4;
+    @apply grid grid-cols-3 lg:grid-cols-6 sm:w-full mx-2 sm:mr-8 gap-4;
   }
 }
 
