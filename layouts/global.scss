@@ -37,7 +37,7 @@ html {
   @apply font-light w-full mx-auto text-xs font-light;
 
   &__header {
-    @apply w-full flex my-2 justify-center mx-auto px-8;
+    @apply w-full flex my-2 justify-center mx-auto px-8 hover:cursor-pointer;
 
     &--name {
       @apply flex items-center w-[136.5px] text-left font-light py-2;

@@ -3,17 +3,50 @@
     <table class="table mt-12 mb-24">
       <thead>
         <tr class="table__header">
-          <th class="table__header--name">Name<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">OVR<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">POS<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">Type<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">PAC<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">SHO<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">PAS<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">DRI<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">DEF<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">PHY<SortIcon class="ml-1" /></th>
-          <th class="table__header--stat">WR<SortIcon class="ml-1" /></th>
+          <th class="table__header--name" @click="sortByName('name')">
+            Name
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('rating')">
+            OVR
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByName('position')">
+            POS
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByName('cardType')">
+            Type
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('pace')">
+            PAC
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('shooting')">
+            SHO
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('passing')">
+            PAS
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('dribbling')">
+            DRI
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('defense')">
+            DEF
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByNumber('physical')">
+            PHY
+            <SortIcon class="ml-1" />
+          </th>
+          <th class="table__header--stat" @click="sortByTwoKeys('workRatesAttacking', 'workRatesDefensive')">
+            WR
+            <SortIcon class="ml-1" />
+          </th>
         </tr>
       </thead>
 
@@ -81,10 +114,19 @@
 <script>
 import { getPlayers } from '../../sanity-client/sanity';
 import SortIcon from '../../assets/icons/SortIcon';
+import { sortByName } from '../../helpers/sortByName.ts';
+import { sortByNumber } from '../../helpers/sortByNumber.ts';
+import { sortByTwoKeys } from '../../helpers/sortByTwoKeys.ts';
 
 export default {
   components: {
     SortIcon,
+  },
+  data() {
+    return {
+      players: [],
+      isAscending: true,
+    };
   },
   async asyncData() {
     try {
@@ -94,6 +136,20 @@ export default {
       console.error('Error fetching players:', error);
       return { players: [] };
     }
+  },
+  methods: {
+    sortByName(key) {
+      this.players = sortByName(this.players, this.isAscending, key);
+      this.isAscending = !this.isAscending;
+    },
+    sortByNumber(key) {
+      this.players = sortByNumber(this.players, this.isAscending, key);
+      this.isAscending = !this.isAscending;
+    },
+    sortByTwoKeys(key1, key2) {
+      this.players = sortByTwoKeys(this.players, this.isAscending, key1, key2);
+      this.isAscending = !this.isAscending;
+    },
   },
 };
 </script>
