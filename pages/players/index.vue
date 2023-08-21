@@ -5,47 +5,47 @@
         <tr class="table__header">
           <th class="table__header--name" @click="sortByName('name')">
             Name
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="name" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('rating')">
             OVR
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="rating" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByName('position')">
             POS
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="position" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByName('cardType')">
             Type
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="cardType" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('pace')">
             PAC
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="pace" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('shooting')">
             SHO
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="shooting" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('passing')">
             PAS
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="passing" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('dribbling')">
             DRI
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="dribbling" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('defense')">
             DEF
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="defense" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByNumber('physical')">
             PHY
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="physical" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
           <th class="table__header--stat" @click="sortByTwoKeys('workRatesAttacking', 'workRatesDefensive')">
             WR
-            <SortIcon class="ml-1" />
+            <TableHeaderIcon column="workRates" :sortColumn="sortColumn" :isAscending="isAscending" />
           </th>
         </tr>
       </thead>
@@ -73,19 +73,16 @@
 
 <script>
 import { getPlayers } from '../../sanity-client/sanity';
-import SortIcon from '../../assets/icons/SortIcon';
 import { sortByName } from '../../helpers/sortByName.ts';
 import { sortByNumber } from '../../helpers/sortByNumber.ts';
 import { sortByTwoKeys } from '../../helpers/sortByTwoKeys.ts';
 
 export default {
-  components: {
-    SortIcon,
-  },
   data() {
     return {
       players: [],
       isAscending: true,
+      sortColumn: '',
     };
   },
   async asyncData() {
@@ -101,14 +98,17 @@ export default {
     sortByName(key) {
       this.players = sortByName(this.players, this.isAscending, key);
       this.isAscending = !this.isAscending;
+      this.sortColumn = key;
     },
     sortByNumber(key) {
       this.players = sortByNumber(this.players, this.isAscending, key);
       this.isAscending = !this.isAscending;
+      this.sortColumn = key;
     },
     sortByTwoKeys(key1, key2) {
       this.players = sortByTwoKeys(this.players, this.isAscending, key1, key2);
       this.isAscending = !this.isAscending;
+      this.sortColumn = 'workRates';
     },
   },
 };

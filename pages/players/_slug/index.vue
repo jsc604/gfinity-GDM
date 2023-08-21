@@ -35,16 +35,10 @@
 <script>
 import { client, getPlayer } from '../../../sanity-client/sanity';
 import imageUrlBuilder from '@sanity/image-url';
-import PlayerStats from '../../../components/PlayerStats.vue';
-import PlayerBioItem from '../../../components/PlayerBioItem.vue';
 
 const builder = imageUrlBuilder(client);
 
 export default {
-  components: {
-    PlayerStats,
-    PlayerBioItem,
-  },
   async asyncData({ params }) {
     try {
       const player = await getPlayer(params.slug);
